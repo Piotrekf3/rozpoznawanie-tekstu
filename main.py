@@ -19,10 +19,10 @@ def get_string(img):
     #img = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
 
     # Write the image after apply opencv to do some ...
-    cv2.imwrite("thres.png", img)
+    #cv2.imwrite("thres.png", img)
 
     # Recognize text with tesseract for python
-    result = Image.open("thres.png")
+    result = Image.fromarray(img)
     result = pytesseract.image_to_string(result)
 
     # Remove template file
@@ -32,6 +32,7 @@ def get_string(img):
 
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
 cap = cv2.VideoCapture(0)
+
 print ('--- Start recognize text from video ---')
 while(True):
     # Capture frame-by-frame
